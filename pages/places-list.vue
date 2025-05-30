@@ -1,11 +1,9 @@
 <template>
-  <div>
-
+  <div class="base-container">
+    <h1 class="page-header">Список мест</h1>
   </div>
 </template>
 <script setup>
-const tabsStore = useMainStore()
-tabsStore.setTab('places-list')
 </script>
 <style lang='scss'>
 

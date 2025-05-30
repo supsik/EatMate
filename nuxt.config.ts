@@ -16,4 +16,9 @@ export default defineNuxtConfig({
       }
     }
   },
+  app: {
+    head: {
+      title: "EatMate"
+    }
+  }
 })

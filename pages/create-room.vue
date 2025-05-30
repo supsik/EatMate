@@ -1,11 +1,9 @@
 <template>
-  <div>
-
+  <div class="base-container">
+    <h1 class="page-header">Создание группы</h1>
   </div>
 </template>
 <script setup>
-const tabsStore = useMainStore()
-tabsStore.setTab('create-room')
 </script>
 <style lang='scss'>
 

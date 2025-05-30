@@ -3,19 +3,19 @@
     <div class="rect"></div>
     <div class="navigation__box">
       <router-link to="/create-room">
-        <IconsAddRoomBtn :active="tabsStore.activeTab == 'create-room'"/>
+        <IconsAddRoomBtn :active="router.path == '/create-room'"/>
       </router-link>
       <router-link to="/">
-        <IconsMainPageBtn :active="tabsStore.activeTab == 'main'"/>
+        <IconsMainPageBtn :active="router.path == '/'"/>
       </router-link>
       <router-link to="/places-list">
-        <IconsGeoBtn :active="tabsStore.activeTab == 'places-list'"/>
+        <IconsGeoBtn :active="router.path == '/places-list'"/>
       </router-link>
     </div>
   </div>
 </template>
 <script setup>
-const tabsStore = useMainStore()
+const router = useRoute()
 </script>
 <style lang='scss'>
 .navigation {
@@ -23,9 +23,11 @@ const tabsStore = useMainStore()
   position: fixed;
   padding-bottom: 24px;
   bottom: 0;
+  pointer-events: none;
 }
 
 .navigation__box {
+  pointer-events: all;
   width: 100%;
   height: 46px;
   max-width: 260px;
@@ -46,7 +48,10 @@ const tabsStore = useMainStore()
     display: flex;
     line-height: 0;
 
-    svg { margin: auto }
+    svg {
+      margin: auto;
+      transition: .05s;
+    }
   }
 }
 
