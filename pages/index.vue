@@ -72,11 +72,22 @@ const testRooms = ref([
 	},
 ])
 
+const waitForTelegramUser = (retries = 10) => {
+  if (typeof window === 'undefined' || !window.Telegram?.WebApp) return
+
+  const unsafe = window.Telegram.WebApp.initDataUnsafe
+
+  if (unsafe?.user)
+    user.value = unsafe.user
+ 	else if (retries > 0)
+    setTimeout(() => waitForTelegramUser(retries - 1), 200) // пробуем снова через 200мс
+}
+
 onMounted(()=> {
-	if (typeof window !== 'undefined' && window.Telegram?.WebApp?.initDataUnsafe) {
-    user.value = window.Telegram.WebApp.initDataUnsafe;
-    alert('Telegram User:', user.value);
-  };
+	if (window.Telegram?.WebApp) {
+    window.Telegram.WebApp.ready()
+    waitForTelegramUser()
+  }
 	testRooms.value.map(el => el.userArr = el.roomUsers.slice(0, 3))
 })
 </script>
