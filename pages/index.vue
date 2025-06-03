@@ -8,7 +8,6 @@
 				:key="item.roomId"
 			>
 				<div class="room__left-side">
-					{{ tg }}
 					<div class="room__name">{{ item.roomName }}</div>
 					<div class="room__place">{{ item.roomPlace }}</div>
 					<div class="room__address">{{ item.roomAddress }}</div>
@@ -75,6 +74,7 @@ const testRooms = ref([
 
 onMounted(()=> {
 	tg = window.Telegram?.WebApp
+	alert(tg)
 	testRooms.value.map(el => { 
 		el.userArr = el.roomUsers.slice(0, 3)
 	}) 
