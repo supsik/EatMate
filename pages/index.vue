@@ -1,5 +1,6 @@
 <template>
 	<div class="base-container">
+		{{ user }}
 		<h1 class="page-header">Обеденные группы</h1>
 		<section class="rooms-section">
 			<div 
@@ -30,8 +31,7 @@
 </template>
 
 <script setup>
-let tg
-
+const user = ref()
 const testRooms = ref([
 	{
 		roomId: 1,
@@ -73,11 +73,11 @@ const testRooms = ref([
 ])
 
 onMounted(()=> {
-	tg = window.Telegram?.WebApp
-	alert(tg)
-	testRooms.value.map(el => { 
-		el.userArr = el.roomUsers.slice(0, 3)
-	}) 
+	if (typeof window !== 'undefined' && window.Telegram?.WebApp?.initDataUnsafe) {
+    user.value = window.Telegram.WebApp.initDataUnsafe;
+    alert('Telegram User:', user.value);
+  };
+	testRooms.value.map(el => el.userArr = el.roomUsers.slice(0, 3))
 })
 </script>
 
