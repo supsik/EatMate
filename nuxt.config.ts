@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   devServer: {
@@ -18,7 +19,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "EatMate"
+      title: "EatMate",
+      script: [
+        { src: 'https://telegram.org/js/telegram-web-app.js' }
+      ]
     }
   }
 })
