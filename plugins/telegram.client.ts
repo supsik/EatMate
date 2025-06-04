@@ -11,7 +11,7 @@ export default defineNuxtPlugin(nuxtApp => {
       // if (!tg)
         // return abortNavigation(createError({ statusCode: 404, statusMessage: 'Not found' }));
       tg?.ready()
-      mainStore.setUserData(tg?.initDataUnsafe?.user || 'error')
+      mainStore.setUserData(tg?.initDataUnsafe || 'error')
     }
 
     document.head.appendChild(script)
