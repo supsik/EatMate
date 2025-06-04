@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore('main', () => {
-  const activeTab = ref('main')
+  const userData = ref()
 
-  const setTab = (param: string) => activeTab.value = param
+  const setUserData = (param: string) => userData.value = param
 
-  return { activeTab, setTab }
+  return { setUserData, userData }
 })

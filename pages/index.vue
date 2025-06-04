@@ -1,6 +1,6 @@
 <template>
 	<div class="base-container">
-		{{ user }}
+		{{ mainStore.userData }}
 		<h1 class="page-header">Обеденные группы</h1>
 		<section class="rooms-section">
 			<div 
@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-const user = ref()
+const mainStore = useMainStore()
 const testRooms = ref([
 	{
 		roomId: 1,
@@ -72,23 +72,11 @@ const testRooms = ref([
 	},
 ])
 
-const waitForTelegramUser = (retries = 10) => {
-  if (typeof window === 'undefined' || !window.Telegram?.WebApp) return
-
-  const unsafe = window.Telegram.WebApp.initDataUnsafe
-
-  if (unsafe?.user)
-    user.value = unsafe.user
- 	else if (retries > 0)
-    setTimeout(() => waitForTelegramUser(retries - 1), 200) // пробуем снова через 200мс
-}
-
 onMounted(()=> {
-	if (window.Telegram?.WebApp) {
-    window.Telegram.WebApp.ready()
-    waitForTelegramUser()
-  }
 	testRooms.value.map(el => el.userArr = el.roomUsers.slice(0, 3))
+
+	console.log(mainStore.userData.value);
+	
 })
 </script>
 
