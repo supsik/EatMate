@@ -1,6 +1,6 @@
 <template>
 	<div class="base-container">
-		{{ user }}
+		{{ mainStore.userData }}
 		<h1 class="page-header">Обеденные группы</h1>
 		<section class="rooms-section">
 			<div 
@@ -31,7 +31,6 @@
 </template>
 
 <script setup>
-const user = ref()
 const mainStore = useMainStore()
 const testRooms = ref([
 	{
@@ -75,12 +74,6 @@ const testRooms = ref([
 
 onMounted(()=> {
 	testRooms.value.map(el => el.userArr = el.roomUsers.slice(0, 3))
-	const tg = window.Telegram.WebApp
-
-  if (tg) {
-    tg.expand()
-    user.value = tg.initDataUnsafe?.user || {}
-  }
 })
 </script>
 

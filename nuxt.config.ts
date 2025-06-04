@@ -20,9 +20,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "EatMate",
-      script: [
-        { src: 'https://telegram.org/js/telegram-web-app.js' }
-      ]
+      script: [{ src: 'https://telegram.org/js/telegram-web-app.js' }]
     }
   }
 })
