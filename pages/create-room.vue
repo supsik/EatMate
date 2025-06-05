@@ -264,6 +264,7 @@ onMounted(() => {
 	}
 
 	.link__content::after {
+		pointer-events: none;
 		position: absolute;
 		width: 10px;
 		height: 12px;
