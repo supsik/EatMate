@@ -15,9 +15,24 @@ body {
   background-color: #FFF;
 }
 
+button {
+  border: none;
+  background: transparent;
+  width: 100%;
+}
+
 h1, h2, h3 {
   font-weight: 400;
 }
+
+li { list-style: none }
+
+input[disabled] { background-color: #FFF }
+input[readonly]:focus {
+  outline: none;
+  caret-color: transparent
+}
+
 
 .page-header {
   text-align: center;

@@ -1,8 +1,7 @@
 <template>
 	<div class="base-container">
-		{{ mainStore.userData }}
 		<h1 class="page-header">Обеденные группы</h1>
-		<section class="rooms-section">
+		<section class="content-section">
 			<div 
 				class="room__container"
 				v-for="item in testRooms"
@@ -78,7 +77,7 @@ onMounted(()=> {
 </script>
 
 <style lang='scss'>
-.rooms-section {
+.content-section {
 	margin-top: 16px;
 	width: 100%;
 	display: flex;
@@ -125,7 +124,7 @@ onMounted(()=> {
 
 .room__address {
 	margin-top: 2px;
-	color: $greyText;
+	color: $grayText;
 	font-family: 'Jost-Light';
 	font-size: 12px;
 }
@@ -140,7 +139,7 @@ onMounted(()=> {
 	width: 28px;
 	height: 28px;
 	border-radius: 100%;
-	background-color: $greyText;
+	background-color: $grayText;
 	border: 2px solid #FFF;
 
 	&:not(&:first-child) {
