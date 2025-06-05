@@ -188,7 +188,6 @@ onMounted(() => {
 			justify-content: center;
 			position: relative;
 			color: $grayText;
-			user-select: none;
 
 			&-checkmark {
 				position: absolute;
