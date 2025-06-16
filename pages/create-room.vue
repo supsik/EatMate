@@ -108,6 +108,13 @@ const inputValue = ref(0)
 // Копируем ссылку
 const copyLink = event => {
 	navigator.clipboard.writeText(event.target.value)
+
+	event.target.disabled = true
+	event.target.parentElement.classList.add('copied')
+	setTimeout(() => {
+		event.target.parentElement.classList.remove('copied')
+		event.target.disabled = false
+	}, 2000)
 }
 
 // Проверка длины input-поля
@@ -261,18 +268,24 @@ onMounted(() => {
 			font-family: 'Jost-Light';
 			cursor: pointer;
 		}
-	}
 
-	.link__content::after {
-		pointer-events: none;
-		position: absolute;
-		width: 10px;
-		height: 12px;
-		right: 10px;
-		top: calc(50% - 6px);
-		display: block;
-		content: '';
-		background-image: url('/icons/copy.svg');
+		&::after {
+			pointer-events: none;
+			position: absolute;
+			width: 10px;
+			height: 12px;
+			right: 10px;
+			top: calc(50% - 6px);
+			display: block;
+			content: '';
+			background-image: url('/icons/copy.svg');
+		}
+		&.copied::after {
+			width: 11px;
+			height: 8px;
+			top: calc(50% - 4px);
+			background-image: url('/icons/checkmark.svg')
+		}
 	}
 }
 
