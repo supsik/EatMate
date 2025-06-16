@@ -6,7 +6,11 @@
 			:class="{'switcher__item--active': item == switcherActive}"
 			@click="switchItem(item)"
 		>
-			<component v-if="typeof(item.content) == 'object'" :is='item.content'></component>
+			<component
+				v-if="typeof(item.content) == 'object'"
+				:size="12"
+				:is='item.content'
+			/>
 			<span v-else>{{ item.content }}</span>
 		</button>
 		<div class="switcher__bar" ref="switcherBar"></div>
@@ -37,12 +41,17 @@ const switchItem = (item) => {
 	border: 1px solid $mainColor;
 
 	.switcher__item {
+		display: grid;
+		place-items: center;
 		position: relative;
 		z-index: 2;
-		font-family: 'Jost-Light';
-		font-size: 12px;
-		letter-spacing: 10%;
-		transition: .3s cubic-bezier(0,.75,.45,1);
+		transition: .3s cubic-bezier(0, .75, .45, 1);
+
+		span { 
+			font-family: 'Jost-Light';
+			font-size: 12px;
+			letter-spacing: 10%;
+		}
 
 		&--active span { color: #FFF }
 	}

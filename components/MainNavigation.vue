@@ -3,13 +3,13 @@
     <button class="create-btn" v-if="router.path == '/create-room'">Создать группу</button>
     <div class="navigation__box">
       <router-link to="/create-room">
-        <IconsAddRoomBtn :active="router.path == '/create-room'"/>
+        <IconsAddRoomBtn :color="router.path == '/create-room' ? '#1193EF' : '#000'"/>
       </router-link>
       <router-link to="/">
-        <IconsMainPageBtn :active="router.path == '/'"/>
+        <IconsMainPageBtn :color="router.path == '/' ? '#1193EF' : '#000'"/>
       </router-link>
       <router-link to="/places-list">
-        <IconsGeoBtn :active="router.path == '/places-list'"/>
+        <IconsGeoBtn :color="router.path == '/places-list' ? '#1193EF' : '#000'"/>
       </router-link>
     </div>
   </div>

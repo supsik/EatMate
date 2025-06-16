@@ -8,11 +8,11 @@
 const switcherList = ref([
   {
 		id: 0,
-		content: resolveComponent('IconsList')
+		content: markRaw(resolveComponent('IconsList'))
 	},
 	{
 		id: 1,
-		content: resolveComponent('IconsList')
+		content: markRaw(resolveComponent('IconsGeoBtn'))
 	}
 ])
 const switcherActive = ref(switcherList.value[0])
@@ -20,6 +20,7 @@ const switcherActive = ref(switcherList.value[0])
 <style lang='scss'>
 .places-page__switcher {
   width: 100px;
+  height: 28px;
   margin: 24px auto 0;
   border-radius: 6px;
 
