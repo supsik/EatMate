@@ -8,6 +8,7 @@
 		>
 			<component
 				v-if="typeof(item.content) == 'object'"
+				:color="item.color"
 				:size="12"
 				:is='item.content'
 			/>
@@ -25,9 +26,11 @@ const props = defineProps({
   switcherList: Array
 })
 
-const switchItem = (item) => {
-	switcherActive.value = item
+const switchItem = item => {
 	switcherBar.value.style.transform = `translateX(${100 * item.id}%)`
+	switcherActive.value = item
+	props.switcherList.forEach(element => element.color = '#000');
+	item.color = '#FFF'
 }
 </script>
 

@@ -8,11 +8,13 @@
 const switcherList = ref([
   {
 		id: 0,
-		content: markRaw(resolveComponent('IconsList'))
+		content: markRaw(resolveComponent('IconsList')),
+    color: '#000'
 	},
 	{
 		id: 1,
-		content: markRaw(resolveComponent('IconsGeoBtn'))
+		content: markRaw(resolveComponent('IconsGeoBtn')),
+    color: '#000'
 	}
 ])
 const switcherActive = ref(switcherList.value[0])
