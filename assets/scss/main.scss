@@ -17,9 +17,11 @@ body {
 }
 
 button {
+  width: 100%;
+  display: block;
+  cursor: pointer;
   border: none;
   background: transparent;
-  width: 100%;
 }
 
 h1, h2, h3 { font-weight: 400 }

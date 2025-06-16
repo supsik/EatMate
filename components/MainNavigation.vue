@@ -1,6 +1,6 @@
 <template>
   <div class="navigation">
-    <div class="rect"></div>
+    <button class="create-btn" v-if="router.path == '/create-room'">Создать группу</button>
     <div class="navigation__box">
       <router-link to="/create-room">
         <IconsAddRoomBtn :active="router.path == '/create-room'"/>
@@ -60,5 +60,18 @@ const router = useRoute()
     width: auto;
     height: 28px;
   }
+}
+
+.create-btn {
+  pointer-events: all;
+  width: 160px;
+  height: 40px;
+  margin: 0 auto 10px;
+  display: block;
+  border-radius: 20px;
+  color: #FFF;
+  font-family: 'Jost-Medium';
+  letter-spacing: 4%;
+  background-color: $mainColor;
 }
 </style>
