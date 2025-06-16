@@ -277,12 +277,8 @@ onMounted(() => {
 }
 
 .fade-enter-active,
-.fade-leave-active {
-  transition: opacity .3s ease-out;
-}
+.fade-leave-active { transition: opacity .3s ease-out }
 
 .fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+.fade-leave-to { opacity: 0 }
 </style>
