@@ -5,7 +5,10 @@
 			v-for="item in props.switcherList"
 			:class="{'switcher__item--active': item == switcherActive}"
 			@click="switchItem(item)"
-		>{{ item.name }}</button>
+		>
+			<component v-if="typeof(item.content) == 'object'" :is='item.content'></component>
+			<span v-else>{{ item.content }}</span>
+		</button>
 		<div class="switcher__bar" ref="switcherBar"></div>
 	</div>
 </template>
@@ -18,7 +21,6 @@ const props = defineProps({
   switcherList: Array
 })
 
-
 const switchItem = (item) => {
 	switcherActive.value = item
 	switcherBar.value.style.transform = `translateX(${100 * item.id}%)`
@@ -27,6 +29,7 @@ const switchItem = (item) => {
 
 <style lang='scss'>
 .switcher {
+	width: 100%;
 	position: relative;
 	display: flex;
 	padding: 3px;
@@ -41,7 +44,7 @@ const switchItem = (item) => {
 		letter-spacing: 10%;
 		transition: .3s cubic-bezier(0,.75,.45,1);
 
-		&--active { color: #FFF }
+		&--active span { color: #FFF }
 	}
 
 	.switcher__bar {

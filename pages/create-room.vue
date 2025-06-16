@@ -80,12 +80,12 @@ const setActiveItem = (item) => {
 const switcherList = ref([
 	{
 		id: 0,
-		name: "ОТКРЫТАЯ",
+		content: "ОТКРЫТАЯ",
 		isPublic: true
 	},
 	{
 		id: 1,
-		name: "ПРИВАТНАЯ",
+		content: "ПРИВАТНАЯ",
 		isPublic: false
 	}
 ])
