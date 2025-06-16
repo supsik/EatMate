@@ -25,15 +25,11 @@
 			</div>
 			<div class="create-page__group">
 				<span>Тип группы:</span>
-				<div class="create-page__switcher">
-					<button
-						class="switcher__item"
-						v-for="item in switcherList"
-						:class="{'switcher__item--active': item == switcherActive}"
-						@click="switchItem(item)"
-					>{{ item.name }}</button>
-					<div class="switcher__bar" ref="switcherBar"></div>
-				</div>
+				<Switcher
+					class="create-page__switcher"
+					v-model="switcherActive"
+					:switcherList="switcherList"
+				/>
 				<transition name="fade">
 					<div v-if="!switcherActive.isPublic" class="create-page__link">
 						<div class="link__info">Пользователи смогут попасть в вашу группу только по ссылке-приглашению:</div>
@@ -81,7 +77,6 @@ const setActiveItem = (item) => {
 }
 
 // Switcher-block
-const switcherBar = ref(null)
 const switcherList = ref([
 	{
 		id: 0,
@@ -94,13 +89,8 @@ const switcherList = ref([
 		isPublic: false
 	}
 ])
-const switcherActive = ref(switcherList.value[0])
 
-// Смена switch-item
-const switchItem = (item) => {
-	switcherActive.value = item
-	switcherBar.value.style.transform = `translateX(${100 * item.id}%)`
-}
+const switcherActive = ref(switcherList.value[0])
 
 // Link-block
 const inputValue = ref(0)
@@ -212,33 +202,9 @@ onMounted(() => {
 }
 
 .create-page__switcher {
-	position: relative;
 	height: 40px;
-	display: flex;
-	padding: 3px;
-	border-radius: 20px;
 	margin-top: 12px;
 	border: 1px solid $mainColor;
-
-	.switcher__item {
-		position: relative;
-		z-index: 2;
-		font-family: 'Jost-Light';
-		font-size: 12px;
-		letter-spacing: 10%;
-		transition: .3s cubic-bezier(0,.75,.45,1);
-
-		&--active { color: #FFF }
-	}
-
-	.switcher__bar {
-		width: calc(50% - 3px);
-		transition: .3s cubic-bezier(0,.75,.45,1);
-		height: 32px;
-		border-radius: 16px;
-		position: absolute;
-		background-color: $mainColor;
-	}
 }
 
 .create-page__link {
